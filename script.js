@@ -10,7 +10,6 @@
     // 1. CONFIGURAÇÕES & CONSTANTES
     // ==========================================
     const CONFIG = Object.freeze({
-        whatsappNumber: '+55 84 99638-8492', // Insira o número oficial com DDD
         instagramUrl: 'https://www.instagram.com/masterautoservicecaico/',
         headerOffset: 80,
         scrollThreshold: 40,
@@ -341,7 +340,7 @@
                     msg += `🔧 *Serviço:* ${data.mensagem}\n`;
                     msg += `------------------------------------`;
 
-                    window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+                    window.open(`https://wa.me/5584996388492`, '_blank');
                     Toast.show('🚀 Abrindo WhatsApp...', 'success');
                 });
             }
