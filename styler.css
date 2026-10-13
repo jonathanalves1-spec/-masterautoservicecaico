@@ -220,6 +220,22 @@ body {
     box-shadow: 0 0 35px rgba(0, 117, 255, 0.6);
 }
 
+.brand-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    color: currentColor;
+    flex-shrink: 0;
+}
+
+.brand-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
 .btn-secundario {
     display: inline-flex;
     align-items: center;
