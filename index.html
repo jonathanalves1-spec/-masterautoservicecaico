@@ -4,30 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Master Auto Service Caicó | Centro Automotivo Premium</title>
-    
-    <!-- Google Fonts -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <link rel="preconnect" href= "https://www.instagram.com/masterautoservicecaico/">
-    <!-- 1. Importa a biblioteca de ícones -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        lucide.createIcons(); // Inicializa os ícones na página
-    </script>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://www.instagram.com/masterautoservicecaico/">
 
-    <!-- 2. Importa o seu arquivo de código script.js local -->
-    <script src="script.js"></script>
-</body>
-</html>
-    <!-- Estilos CSS -->
     <link rel="stylesheet" href="styler.css">
-    
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-
-    <!-- CABEÇALHO DA PÁGINA -->
     <header class="cabecalho">
         <div class="container header-content">
             <a href="#" class="logo-container">
@@ -37,7 +26,7 @@
                     <span class="subtitulo-logo">SERVICE CAICÓ</span>
                 </div>
             </a>
-            
+
             <nav class="menu-navegacao">
                 <ul>
                     <li><a href="#home">Início</a></li>
@@ -47,13 +36,12 @@
                 </ul>
             </nav>
 
-            <a href="https://wa.me/+55 84 99638-8492" target="_blank" class="btn-header">
+            <a href="https://wa.me/5584996388492" target="_blank" rel="noreferrer" class="btn-header">
                 <i data-lucide="phone"></i> +55 84 99638-8492
             </a>
         </div>
     </header>
 
-    <!-- SEÇÃO PRINCIPAL (HERO) -->
     <section id="home" class="hero">
         <div class="container hero-content">
             <div class="badge-hero">
@@ -61,36 +49,35 @@
             </div>
             <h2>Sua Oficina Mecânica de Alta Precisão</h2>
             <p>Especialistas em Suspensão, Direção, Freios, Injeção Eletrônica, Embreagem, Revisão Preventiva e muito mais!</p>
-            
+
             <div class="hero-botoes">
                 <a href="#contato" class="btn-principal">
                     Agendar Diagnóstico <i data-lucide="arrow-right"></i>
                 </a>
-                <a href="https://wa.me/+55 84 99638-8492" target="_blank" class="btn-secundario">
+                <a href="https://wa.me/5584996388492" target="_blank" rel="noreferrer" class="btn-secundario">
                     <i data-lucide="message-square"></i> Falar no WhatsApp
                 </a>
             </div>
 
-            <!-- ESTATÍSTICAS DA OFICINA -->
-           <!-- CONTAINER DE ESTATÍSTICAS / METRICAS -->
-<div class="caixa-estatisticas">
-    <div class="stat-card">
-        <h3 class="stat-numero">+Que o suficiente para fazer a diferença no seu veículo</h3>
-        <p class="stat-rotulo">Veículos Atendidos</p>
-    </div>
+            <div class="caixa-estatisticas">
+                <div class="stat-card">
+                    <h3 class="stat-numero">+Que o suficiente para fazer a diferença no seu veículo</h3>
+                    <p class="stat-rotulo">Veículos Atendidos</p>
+                </div>
 
-    <div class="stat-card">
-        <h3 class="stat-numero">100%</h3>
-        <p class="stat-rotulo">Peças e Garantia</p>
-    </div>
+                <div class="stat-card">
+                    <h3 class="stat-numero">100%</h3>
+                    <p class="stat-rotulo">Peças e Garantia</p>
+                </div>
 
-    <div class="stat-card">
-        <h3 class="stat-numero">Tecnologia</h3>
-        <p class="stat-rotulo">Diagnóstico Via Scanner</p>
-    </div>
-</div>
+                <div class="stat-card">
+                    <h3 class="stat-numero">Tecnologia</h3>
+                    <p class="stat-rotulo">Diagnóstico Via Scanner</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- DIFERENCIAIS DA OFICINA -->
     <section id="diferenciais" class="diferenciais">
         <div class="container">
             <div class="grid-diferenciais">
@@ -113,7 +100,6 @@
         </div>
     </section>
 
-    <!-- SEÇÃO DE SERVIÇOS DESTACADOS -->
     <section id="servicos" class="servicos">
         <div class="container">
             <div class="cabecalho-secao">
@@ -173,14 +159,13 @@
         </div>
     </section>
 
-    <!-- CONTATO E ORÇAMENTO -->
     <section id="contato" class="contato">
         <div class="container">
             <div class="grid-contato">
                 <div class="info-contato">
                     <h2>Fale Conosco</h2>
                     <p class="desc-contato">Traga seu veículo para a melhor oficina de Caicó ou solicite um orçamento direto pelo site.</p>
-                    
+
                     <div class="item-info">
                         <i data-lucide="map-pin"></i>
                         <div>
@@ -207,22 +192,25 @@
                 </div>
 
                 <div class="formulario-contato">
-                    <form action="#" method="POST">
+                    <form id="form-orcamento" action="#" method="POST">
                         <h3>Solicitar Orçamento</h3>
                         <div class="form-group">
-                            <input type="text" placeholder="Seu Nome Completo" required>
+                            <input type="text" name="nome" placeholder="Seu Nome Completo" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" placeholder="Seu WhatsApp" required>
+                            <input type="tel" name="telefone" placeholder="Seu WhatsApp" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Veículo e Ano (Ex: Civic 2.0 - 2021)">
+                            <input type="text" name="veiculo" placeholder="Veículo e Ano (Ex: Civic 2.0 - 2021)">
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Qual serviço você precisa? (Suspensão, Freios, Injeção, Embreagem, Revisão...)" rows="4" required></textarea>
+                            <textarea name="mensagem" placeholder="Qual serviço você precisa? (Suspensão, Freios, Injeção, Embreagem, Revisão...)" rows="4" required></textarea>
                         </div>
-                        <button type="submit" class="btn-principal btn-block">
+                        <button id="btn-whatsapp" type="button" class="btn-principal btn-block">
                             Enviar via WhatsApp <i data-lucide="send"></i>
+                        </button>
+                        <button id="btn-instagram" type="button" class="btn-secundario btn-block" style="margin-top: 12px;">
+                            Copiar para Instagram <i data-lucide="message-circle"></i>
                         </button>
                     </form>
                 </div>
@@ -230,21 +218,18 @@
         </div>
     </section>
 
-    <!-- RODAPÉ -->
     <footer class="rodape">
         <div class="container rodape-content">
             <p>🚗🛠️ 2026 Master Auto Service Caicó. Todos os direitos reservados.</p>
             <div class="redes-sociais">
-                <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
-                <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+                <a href="https://www.instagram.com/masterautoservicecaico/" target="_blank" rel="noreferrer" aria-label="Instagram"><i data-lucide="message-circle"></i></a>
+                <a href="#" aria-label="Facebook"><i data-lucide="globe"></i></a>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts de Ícones e Lógica -->
     <script>
-        lucide.createIcons();
+        if (window.lucide) lucide.createIcons();
     </script>
-    <script src="script.js"></script>
 </body>
 </html>

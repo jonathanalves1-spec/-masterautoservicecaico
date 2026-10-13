@@ -145,7 +145,8 @@
                 const data = {
                     nome: this.fields.nome?.value || '',
                     telefone: this.fields.telefone?.value || '',
-                    veiculo: this.fields.veiculo?.value || ''
+                    veiculo: this.fields.veiculo?.value || '',
+                    mensagem: this.fields.mensagem?.value || ''
                 };
                 localStorage.setItem(CONFIG.storageKey, JSON.stringify(data));
             };
@@ -163,6 +164,7 @@
                     if (this.fields.nome && data.nome) this.fields.nome.value = data.nome;
                     if (this.fields.telefone && data.telefone) this.fields.telefone.value = data.telefone;
                     if (this.fields.veiculo && data.veiculo) this.fields.veiculo.value = data.veiculo;
+                    if (this.fields.mensagem && data.mensagem) this.fields.mensagem.value = data.mensagem;
                 }
             } catch (e) {}
         }
@@ -271,7 +273,7 @@
             });
         },
 
-        setupAnimations() {
+        setupAnimations() {            if (!('IntersectionObserver' in window)) return;
             const targets = document.querySelectorAll('.card-servico, .card-diferencial, .stat-card, .caixa-estatisticas, .info-contato, .formulario-contato');
             const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
@@ -322,7 +324,12 @@
         if (formElement) {
             const fsm = new FormStateMachine(formElement);
 
-            // Botão WhatsApp
+            formElement.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const button = document.getElementById('btn-whatsapp');
+                if (button) button.click();
+            });
+
             const btnWa = document.getElementById('btn-whatsapp');
             if (btnWa) {
                 btnWa.addEventListener('click', () => {
@@ -340,12 +347,12 @@
                     msg += `🔧 *Serviço:* ${data.mensagem}\n`;
                     msg += `------------------------------------`;
 
-                    window.open(`https://wa.me/5584996388492`, '_blank');
+                    const whatsappUrl = `https://wa.me/5584996388492?text=${encodeURIComponent(msg)}`;
+                    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
                     Toast.show('🚀 Abrindo WhatsApp...', 'success');
                 });
             }
 
-            // Botão Instagram
             const btnIg = document.getElementById('btn-instagram');
             if (btnIg) {
                 btnIg.addEventListener('click', async () => {
@@ -361,7 +368,7 @@
                     if (copied) {
                         Toast.show('📋 Mensagem copiada! Cole no Direct do Instagram.', 'success');
                     }
-                    setTimeout(() => window.open(CONFIG.instagramUrl, '_blank'), 600);
+                    setTimeout(() => window.open(CONFIG.instagramUrl, '_blank', 'noopener,noreferrer'), 600);
                 });
             }
         }
