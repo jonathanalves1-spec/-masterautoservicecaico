@@ -256,38 +256,28 @@ body {
     border-color: #2D3748;
 }
 
-/* ESTATÍSTICAS */
-/* ==========================================================================
-   CAIXA DE ESTATÍSTICAS / MÉTRICAS PREMIUM
-   ========================================================================== */
+/* CAIXA DE ESTATÍSTICAS / MÉTRICAS PREMIUM */
 .caixa-estatisticas {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr; /* Dá mais destaque para o primeiro item */
+    grid-template-columns: 1.4fr 1fr 1fr;
     align-items: center;
     gap: 32px;
-    
-    /* Fundo Escuro com Borda Fina Metálica */
     background-color: #0d1117;
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 20px;
-    
     padding: 48px 40px;
     margin: 40px auto 0;
     width: 100%;
     max-width: 1100px;
-    
-    /* Sombra suave */
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     transition: all 0.4s ease;
 }
 
-/* Efeito de brilho neon azul ao passar o mouse na caixa */
 .caixa-estatisticas:hover {
     border-color: rgba(0, 117, 255, 0.3);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 117, 255, 0.15);
 }
 
-/* ESTILO DOS CARDS/COLUNAS INTERNAS */
 .stat-card {
     text-align: center;
     display: flex;
@@ -296,7 +286,6 @@ body {
     align-items: center;
 }
 
-/* Títulos / Números principais */
 .stat-numero {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 2.1rem;
@@ -307,29 +296,13 @@ body {
     margin-bottom: 10px;
 }
 
-/* Subtítulos / Descrições */
 .stat-rotulo {
     font-size: 0.95rem;
     font-weight: 500;
-    color: #8b949e; /* Cinza suave e legível */
+    color: #8b949e;
     line-height: 1.4;
 }
 
-/* ==========================================================================
-   RESPONSIVIDADE (ADAPTAÇÃO PARA CELULARES E TABLETS)
-   ========================================================================== */
-@media (max-width: 992px) {
-    .caixa-estatisticas {
-        grid-template-columns: 1fr; /* Empilha as caixas no mobile */
-        gap: 40px;
-        padding: 36px 24px;
-        text-align: center;
-    }
-
-    .stat-numero {
-        font-size: 1.75rem;
-    }
-}
 /* ==========================================================================
    4. CARDS E HOVERS
    ========================================================================== */
@@ -442,7 +415,7 @@ section {
 }
 
 /* ==========================================================================
-   5. CONTATO E FORMULÁRIO
+   5. CONTATO E FORMULÁRIO (INCLUINDO CONTADOR DE CARACTERES)
    ========================================================================== */
 .contato {
     background: var(--dark-surface);
@@ -498,8 +471,10 @@ section {
     margin-bottom: 24px;
 }
 
+/* GARANTE POSICIONAMENTO RELATIVO NO FORM-GROUP PARA O CONTADOR */
 .form-group {
     margin-bottom: 20px;
+    position: relative !important;
 }
 
 .formulario-contato input,
@@ -514,11 +489,42 @@ section {
     transition: var(--transition);
 }
 
+.formulario-contato textarea {
+    resize: vertical;
+    min-height: 120px;
+    padding-bottom: 36px !important; /* Espaço para não cobrir o texto com o contador */
+}
+
 .formulario-contato input:focus,
 .formulario-contato textarea:focus {
     outline: none;
     border-color: var(--primary);
     box-shadow: 0 0 15px var(--primary-glow);
+}
+
+/* ESTILOS DO CONTADOR DE CARACTERES */
+.char-counter {
+    position: absolute;
+    bottom: 12px;
+    right: 14px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    background: rgba(10, 12, 14, 0.9);
+    border: 1px solid var(--dark-border);
+    padding: 2px 8px;
+    border-radius: 6px;
+    pointer-events: none;
+    z-index: 10;
+    backdrop-filter: blur(4px);
+    transition: var(--transition);
+    user-select: none;
+}
+
+.char-counter.limit-reached {
+    color: #FF4D4D !important;
+    border-color: rgba(255, 77, 77, 0.6) !important;
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.3);
 }
 
 .btn-block {
@@ -569,9 +575,21 @@ section {
 }
 
 @media (max-width: 992px) {
+    .caixa-estatisticas {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 36px 24px;
+        text-align: center;
+    }
+
+    .stat-numero {
+        font-size: 1.75rem;
+    }
+
     .grid-contato {
         grid-template-columns: 1fr;
     }
+
     .hero h2 {
         font-size: 2.5rem;
     }
@@ -605,10 +623,6 @@ section {
 
     .btn-header {
         display: none;
-    }
-
-    .grid-stats {
-        grid-template-columns: 1fr;
     }
 
     .hero-botoes {
