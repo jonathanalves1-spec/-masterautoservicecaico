@@ -14,7 +14,8 @@
         headerOffset: 80,
         scrollThreshold: 40,
         storageKey: 'master_auto_draft_v2',
-        analyticsPrefix: '[MasterAuto Analytics]'
+        analyticsPrefix: '[MasterAuto Analytics]',
+        maxCharLimit: 300
     });
 
     // ==========================================
@@ -110,7 +111,7 @@
                 nome: formElement.querySelector('input[placeholder*="Nome"]'),
                 telefone: formElement.querySelector('input[type="tel"]'),
                 veiculo: formElement.querySelector('input[placeholder*="Veículo"]'),
-                mensagem: formElement.querySelector('textarea')
+                mensagem: document.getElementById('campo-mensagem') || formElement.querySelector('textarea')
             };
             
             this.init();
@@ -119,6 +120,7 @@
         init() {
             this.bindMasks();
             this.bindAutoSave();
+            this.setupCharCounter();
             this.loadDraft();
         }
 
@@ -138,6 +140,36 @@
                     else e.target.value = `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7)}`;
                 });
             }
+        }
+
+        // LÓGICA DO CONTADOR E LIMITE DE CARACTERES
+        setupCharCounter() {
+            const textarea = document.getElementById('campo-mensagem') || this.fields.mensagem;
+            const counter = document.getElementById('char-counter');
+
+            if (!textarea) return;
+
+            // Define o limite nativo de 300 caracteres no atributo do elemento
+            textarea.setAttribute('maxlength', CONFIG.maxCharLimit);
+
+            const atualizar = () => {
+                const total = textarea.value.length;
+                if (counter) {
+                    counter.textContent = `${total}/${CONFIG.maxCharLimit}`;
+                    if (total >= CONFIG.maxCharLimit) {
+                        counter.classList.add('limit-reached');
+                    } else {
+                        counter.classList.remove('limit-reached');
+                    }
+                }
+            };
+
+            // Escuta input, digitação, colagem (paste) e mudanças
+            ['input', 'keyup', 'paste', 'change'].forEach(evt => {
+                textarea.addEventListener(evt, () => setTimeout(atualizar, 10));
+            });
+
+            atualizar();
         }
 
         bindAutoSave() {
@@ -164,7 +196,10 @@
                     if (this.fields.nome && data.nome) this.fields.nome.value = data.nome;
                     if (this.fields.telefone && data.telefone) this.fields.telefone.value = data.telefone;
                     if (this.fields.veiculo && data.veiculo) this.fields.veiculo.value = data.veiculo;
-                    if (this.fields.mensagem && data.mensagem) this.fields.mensagem.value = data.mensagem;
+                    if (this.fields.mensagem && data.mensagem) {
+                        this.fields.mensagem.value = data.mensagem;
+                        this.setupCharCounter();
+                    }
                 }
             } catch (e) {}
         }
@@ -273,7 +308,8 @@
             });
         },
 
-        setupAnimations() {            if (!('IntersectionObserver' in window)) return;
+        setupAnimations() {
+            if (!('IntersectionObserver' in window)) return;
             const targets = document.querySelectorAll('.card-servico, .card-diferencial, .stat-card, .caixa-estatisticas, .info-contato, .formulario-contato');
             const observer = new IntersectionObserver((entries, obs) => {
                 entries.forEach(entry => {
