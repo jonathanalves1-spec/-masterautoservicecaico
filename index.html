@@ -207,7 +207,9 @@
                             <input type="text" name="veiculo" placeholder="Veículo e Ano (Ex: Civic 2.0 - 2021)">
                         </div>
                         <div class="form-group">
-                            <textarea name="mensagem" placeholder="Qual serviço você precisa? (Suspensão, Freios, Injeção, Embreagem, Revisão...)" rows="4" required></textarea>
+                            <!-- ATRIBUTO MAXLENGTH ATIVADO NATIVAMENTE E CONTADOR PRESENTE -->
+                            <textarea id="campo-mensagem" name="mensagem" placeholder="Qual serviço você precisa? (Suspensão, Freios, Injeção, Embreagem, Revisão...)" rows="4" maxlength="300" required></textarea>
+                            <div id="char-counter" class="char-counter">0/300</div>
                         </div>
                         <button id="btn-whatsapp" type="button" class="btn-principal btn-block">
                             <span class="brand-icon" aria-hidden="true">
